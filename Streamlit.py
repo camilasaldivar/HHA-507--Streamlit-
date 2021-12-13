@@ -6,14 +6,13 @@ Created on Thu Dec  9 07:00:43 2021
 @author: camilasaldivar
 """
 
+
 import pandas as pd
 import streamlit as st
 import numpy as np
 import time
+import plotly.figure_factory as ff
 
-import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 
 @st.cache
 def load_hospitals():
