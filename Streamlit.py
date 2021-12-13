@@ -11,6 +11,9 @@ import streamlit as st
 import numpy as np
 import time
 
+import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 @st.cache
 def load_hospitals():
