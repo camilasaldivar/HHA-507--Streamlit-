@@ -6,12 +6,13 @@ Created on Thu Dec  9 07:00:43 2021
 @author: camilasaldivar
 """
 
-
+import plotly as px
 import pandas as pd
 import streamlit as st
 import numpy as np
 import time
-import plotly.figure_factory as ff
+import matplotlib.pyplot as plt
+
 
 
 @st.cache
