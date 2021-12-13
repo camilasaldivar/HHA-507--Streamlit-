@@ -9,8 +9,6 @@ Created on Thu Dec  9 07:00:43 2021
 import pandas as pd
 import streamlit as st
 import numpy as np
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 import time
 
 
