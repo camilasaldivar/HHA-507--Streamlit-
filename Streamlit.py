@@ -32,7 +32,8 @@ def load_outpatient():
     return df_outpatient_2
 
 
-st.title('Medicare — Expenses - NY')
+st.title('AHI STREAMLIT APP DEPLOYMENT')
+
 
 
 
@@ -45,7 +46,7 @@ st.title('Medicare — Expenses - NY')
 #     my_bar.progress(percent_complete + 1)
   
 
-st.write('Hello, *World!* :sunglasses:') 
+st.write('Hello, *World!*':) 
   
 # Load the data:     
 df_hospital_2 = load_hospitals()
@@ -56,7 +57,7 @@ df_outpatient_2 = load_outpatient()
 
 
 
-
+st.header('Hospital Dataframe:')
 
 hospitals_ny = df_hospital_2[df_hospital_2['state'] == 'NY']
 
@@ -72,6 +73,8 @@ st.markdown('Most of the hospitals in the New York area are acute care, followed
 st.subheader('Visual Representation:')
 fig = px.pie(bar1, values='hospital_type', names='index')
 st.plotly_chart(fig)
+
+st.markdown('The pie chart above shows the different hospital types in the New York Area ')
 
 
 
@@ -98,7 +101,7 @@ st.markdown('Based on this above bar chart, we can see the majority of hospitals
 
 
 #Drill down into INPATIENT and OUTPATIENT just for NY 
-st.title('Drill Down into INPATIENT data')
+st.title('INPATIENT dataframe')
 
 
 inpatient_ny = df_inpatient_2[df_inpatient_2['provider_state'] == 'NY']
