@@ -6,7 +6,7 @@ Created on Thu Dec  9 07:00:43 2021
 @author: camilasaldivar
 """
 
-import plotly as px
+import plotly.express as px
 import pandas as pd
 import streamlit as st
 import numpy as np
@@ -66,10 +66,10 @@ st.subheader('Hospital Type - NY')
 bar1 = hospitals_ny['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
 
-st.markdown('The majority of hospitals in NY are acute care, followed by psychiatric')
+st.markdown('Most of the hospitals in the New York area are acute care, followed by psychiatric')
 
 
-st.subheader('With a PIE Chart:')
+st.subheader('Visual Representation:')
 fig = px.pie(bar1, values='hospital_type', names='index')
 st.plotly_chart(fig)
 
