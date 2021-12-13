@@ -46,7 +46,7 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 #     my_bar.progress(percent_complete + 1)
   
 
-st.write('Hello, *World!*':) 
+st.write('Welcome, *Everyone!* :sunglasses:')
   
 # Load the data:     
 df_hospital_2 = load_hospitals()
