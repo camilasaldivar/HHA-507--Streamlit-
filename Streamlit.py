@@ -169,7 +169,9 @@ st.dataframe(costs_condition_hospital)
 
 st.title('OUTPATIENT Dataframe')
 
-bar2 = hospitals_ny['provider_name'].value_counts().reset_index()
+outpatient_tx = df_outpatient_2[df_outpatient_2['state'] == 'TX']
+
+bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
 st.subheader('Visual Representation:')
 fig = px.pie(bar2, values='provider_name', names='index')
