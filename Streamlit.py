@@ -88,8 +88,7 @@ st.markdown('Most of the hospitals in the New York area are acute care, followed
 st.subheader('Visual Representation:')
 fig = px.pie(bar1, values='hospital_type', names='index')
 st.plotly_chart(fig)
-
-st.markdown('The pie chart above shows the different hospital types in the New York Area ')
+st.markdown('The pie chart above shows the different hospital types in the New York Area, with 75.4% being acute care hospitals')
 
 
 
