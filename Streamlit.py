@@ -87,13 +87,13 @@ st.subheader('Hospital Type in New York')
 bar1 = hospitals_ny['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
 
-st.markdown('Most of the hospitals in the New York area are acute care, followed by psychiatric')
+st.caption('Most of the hospitals in the New York area are acute care, followed by psychiatric')
 
 
 st.subheader('Visual Representation:')
 fig = px.pie(bar1, values='hospital_type', names='index')
 st.plotly_chart(fig)
-st.markdown('The pie chart above shows the different hospital types in the New York Area, with 75.4% being acute care hospitals')
+st.caption('The pie chart above shows the different hospital types in the New York Area, with 75.4% being acute care hospitals')
 
 
 
