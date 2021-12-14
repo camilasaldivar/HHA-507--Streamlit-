@@ -58,12 +58,8 @@ st.header('Hospital Dataframe:')
 st.dataframe(df_hospital_2)
 
 
-st.sidebar.title(“Select Visual Charts”)
 
 st.sidebar.markdown(“Select the Charts/Plots accordingly:”)
-
-
-
 
 
 
