@@ -191,7 +191,8 @@ outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'NY']
 
 bar3 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar3)
-st.markdown('The most commonly visited outpatient provider in the state of New York is')
+st.markdown('The most common outpatient provider in the state of New York is Mary Imogene Bassett Hospital
+')
 
 st.subheader('Bar chart displaying different outpatient providers in New York:')
 fig4 = px.bar(bar3, x='index', y='provider_name')
