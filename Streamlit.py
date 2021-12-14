@@ -239,9 +239,7 @@ fig4 = px.bar(bar3, x='index', y='provider_name')
 st.plotly_chart(fig4)
 with st.expander("See explanation"):
      st.write("""
-         The chart above shows some numbers I picked for you.
-         I rolled actual dice for these, so they're *guaranteed* to
-         be random.
+         The chart above shows various outpatient facilities in New York.
      """)
 
 
