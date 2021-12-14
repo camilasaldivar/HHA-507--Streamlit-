@@ -169,7 +169,7 @@ st.dataframe(costs_condition_hospital)
 
 st.title('OUTPATIENT Dataframe')
 
-outpatient_tx = df_outpatient_2[df_outpatient_2['state'] == 'TX']
+outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'TX']
 
 bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
