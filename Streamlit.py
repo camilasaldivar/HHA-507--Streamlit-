@@ -169,13 +169,13 @@ st.dataframe(costs_condition_hospital)
 
 st.title('OUTPATIENT Dataframe')
 
+bar2 = hospitals_ny['provider_name'].value_counts().reset_index()
+st.dataframe(bar2)
+st.subheader('Visual Representation:')
+fig = px.pie(bar2, values='provider_name', names='index')
+st.plotly_chart(fig)
 
-fig, ax = plt.subplots(figsize=dims)
-ax = sns.barplot(x = 'Number of Hospitals', y = 'provider_state', data = Total_state)
-ax.set(xlabel = 'Number of Hospitals', ylabel = 'States')
-ax.set_title('Number of Hospitals per State')
 
-st.pyplot(fig)
 
 # hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
 # hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
