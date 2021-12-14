@@ -46,7 +46,7 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 #     my_bar.progress(percent_complete + 1)
 
 
-[theme]
+
 
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
