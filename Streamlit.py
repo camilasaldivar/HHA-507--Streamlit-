@@ -59,10 +59,6 @@ st.dataframe(df_hospital_2)
 
 
 
-st.sidebar.markdown(“Select the Charts/Plots accordingly:”)
-
-
-
 
 st.subheader('Hospital Type')
 bar1 = df_hospital_2['hospital_type'].value_counts().reset_index()
