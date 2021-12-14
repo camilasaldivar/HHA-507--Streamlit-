@@ -47,6 +47,9 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
   
 
 st.write('Welcome, *Everyone!* :sunglasses:')
+
+color = st.color_picker('Pick A Color', '#00f900')
+st.write('The current color is', color)
   
 # Load the data:     
 df_hospital_2 = load_hospitals()
@@ -55,6 +58,8 @@ df_outpatient_2 = load_outpatient()
 
 
 st.header('Hospital Dataframe:')
+
+st.markdown('The dataframe below shows information regarding hospitals')
 st.dataframe(df_hospital_2)
 
 
@@ -117,12 +122,20 @@ st.subheader('TX Hospitals - Timeliness of Care')
 bar4 = hospitals_tx['timeliness_of_care_national_comparison'].value_counts().reset_index()
 fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig5)
-
-st.markdown('Based on this above bar chart, we can see the the timeliness of care data for the majority of hospitals in the Texas area is not available and for 127 hospitals is the same as the national average')
+st.caption('Based on the bar chart above, we can see the the timeliness of care data for the majority of hospitals in the Texas area is not available and for 127 hospitals is the same as the national average')
 
 
 #Drill down into INPATIENT and OUTPATIENT just for NY 
 st.title('INPATIENT dataframe')
+st.markdown('The dataframe displayed below is for the Inpatient facility')
+
+st.subheader('Inpatient Facility')
+bar7 = df_inpatient_2['provider_state'].value_counts().reset_index()
+st.dataframe(bar7)
+
+st.subheader('Pie Chart of Inpatient Facilities by state')
+fig7 = px.pie(bar7, values='provider_state', names='index')
+st.plotly_chart(fig7)
 
 
 inpatient_ny = df_inpatient_2[df_inpatient_2['provider_state'] == 'NY']
@@ -196,7 +209,7 @@ outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'TX']
 
 bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
-st.markdown('The most commonly visited outpatient provider in the state of Texas is Scott & White Medical Center - Temple, followed by Mother Frances Hospital ')
+st.caption('The most commonly visited outpatient provider in the state of Texas is Scott & White Medical Center - Temple, followed by Mother Frances Hospital ')
 
 st.subheader('Bar chart displaying different outpatient providers in Texas:')
 fig3 = px.bar(bar2, x='index', y='provider_name')
