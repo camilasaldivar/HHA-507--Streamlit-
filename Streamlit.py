@@ -59,7 +59,7 @@ df_outpatient_2 = load_outpatient()
 
 st.header('Hospital Dataframe:')
 
-st.subheader('Pivot Table for All Hospitals')
+st.subheader('Pivot Table for Capturing the Rating for All Hospitals')
 dataframe_pivot = df_hospital_2.pivot_table(index=['hospital_ownership','hospital_type'],values=['hospital_overall_rating'],aggfunc='count')
 st.dataframe(dataframe_pivot)
 
@@ -110,8 +110,7 @@ bar4 = hospitals_tx['timeliness_of_care_national_comparison'].value_counts().res
 fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig5)
 
-st.markdown('Based on this above bar chart, we can see the majority of hospitals in the Texas area fall below the national\
-        average as it relates to timeliness of care')
+st.markdown('Based on this above bar chart, we can see the the timeliness of care data for the majority of hospitals in the Texas area is not available and for 127 hospitals is the same as the national average')
 
 
 #Drill down into INPATIENT and OUTPATIENT just for NY 
