@@ -57,6 +57,17 @@ df_outpatient_2 = load_outpatient()
 st.header('Hospital Dataframe:')
 st.dataframe(df_hospital_2)
 
+
+st.sidebar.title(“Select Visual Charts”)
+
+st.sidebar.markdown(“Select the Charts/Plots accordingly:”)
+
+
+
+
+
+
+
 st.subheader('Hospital Type')
 bar1 = df_hospital_2['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
