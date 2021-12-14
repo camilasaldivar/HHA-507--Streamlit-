@@ -54,7 +54,13 @@ df_inpatient_2 = load_inatpatient()
 df_outpatient_2 = load_outpatient()
 
 
+st.sidebar.checkbox("Show Analysis by State", True, key=1)
+select = st.sidebar.selectbox('Select a State',df_hospital_2['provider_state'])
 
+#get the state selected in the selectbox
+state_data = df_hospital_2[df_hospital_2['provider_state'] == select]
+select_status = st.sidebar.radio("Mortality National Comparison", ('Below the national average',
+'Not available', 'Same as national average', 'above the national average'))
 
 
 st.header('Hospital Dataframe:')
