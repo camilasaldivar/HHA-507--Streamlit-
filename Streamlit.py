@@ -47,7 +47,7 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 
 
 
-theme
+
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
 secondaryBackgroundColor="#e0e0ef"
