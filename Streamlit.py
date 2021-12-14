@@ -176,9 +176,8 @@ outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'TX']
 bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
 st.subheader('Visual Representation:')
-fig3 = px.bar(bar2, x='index', names='provider_name')
+fig3 = px.bar(bar2, x='index', y='provider_name')
 st.plotly_chart(fig3)
-
 
 
 # hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
