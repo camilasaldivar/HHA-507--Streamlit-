@@ -79,6 +79,7 @@ st.dataframe(df_hospital_2)
 st.subheader('Hospital Type')
 bar1 = df_hospital_2['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
+st.caption('The above chart displays the type of hospitals found within this dataframe')
 
 st.subheader('Pie Chart of Hospital Type')
 fig = px.pie(bar1, values='hospital_type', names='index')
@@ -136,7 +137,7 @@ st.plotly_chart(fig5)
 st.caption('Based on the bar chart above, we can see the the timeliness of care data for the majority of hospitals in the Texas area is not available and for 127 hospitals is the same as the national average')
 
 
-#Drill down into INPATIENT and OUTPATIENT just for NY 
+#Drill down into INPATIENT and OUTPATIENT 
 st.title('INPATIENT dataframe')
 st.markdown('The dataframe displayed below is for the Inpatient facility')
 
@@ -145,8 +146,9 @@ bar7 = df_inpatient_2['provider_state'].value_counts().reset_index()
 st.dataframe(bar7)
 
 st.subheader('Pie Chart of Inpatient Facilities by state')
-fig7 = px.pie(bar7, values='provider_state', names='index')
+fig7 = px.bar(bar7, x='index', y='provider_state')
 st.plotly_chart(fig7)
+
 
 
 inpatient_ny = df_inpatient_2[df_inpatient_2['provider_state'] == 'NY']
@@ -232,7 +234,7 @@ outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'NY']
 
 bar3 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar3)
-st.markdown('The most common outpatient provider in the state of New York is Mary Imogene Bassett Hospital')
+st.caption('The most common outpatient provider in the state of New York is Mary Imogene Bassett Hospital')
 
 st.subheader('Bar chart displaying different outpatient providers in New York:')
 fig4 = px.bar(bar3, x='index', y='provider_name')
