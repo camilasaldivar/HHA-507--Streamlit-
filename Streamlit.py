@@ -106,7 +106,7 @@ st.markdown('Based on this above bar chart, we can see the majority of hospitals
 
 
 st.subheader('TX Hospitals - Timelieness of Care')
-bar4 = texas_ny['timeliness_of_care_national_comparison'].value_counts().reset_index()
+bar4 = hospitals_ny['timeliness_of_care_national_comparison'].value_counts().reset_index()
 fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig5)
 
