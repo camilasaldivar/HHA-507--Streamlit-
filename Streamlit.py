@@ -58,6 +58,15 @@ df_outpatient_2 = load_outpatient()
 
 
 st.header('Hospital Dataframe:')
+st.dataframe(df_hospital_2)
+
+st.subheader('Hospital Type')
+bar1 = df_hospital_2['hospital_type'].value_counts().reset_index()
+st.dataframe(bar1)
+
+st.subheader('Pie Chart of Hospital Type')
+fig = px.pie(bar1, values='hospital_type', names='index')
+st.plotly_chart(fig)
 
 st.subheader('Pivot Table Capturing the Rating for All Hospitals Using the Parameters of Hospital Ownership and Hospital Type')
 dataframe_pivot = df_hospital_2.pivot_table(index=['hospital_ownership','hospital_type'],values=['hospital_overall_rating'],aggfunc='count')
