@@ -59,7 +59,7 @@ df_outpatient_2 = load_outpatient()
 
 st.header('Hospital Dataframe:')
 
-st.subheader('Pivot Table for Hospital Dataframe')
+st.subheader('Pivot Table for All Hospitals')
 dataframe_pivot = df_hospital_2.pivot_table(index=['hospital_ownership','hospital_type'],values=['hospital_overall_rating'],aggfunc='count')
 st.dataframe(dataframe_pivot)
 
@@ -67,7 +67,7 @@ hospitals_ny = df_hospital_2[df_hospital_2['state'] == 'NY']
 
 
 #Bar Chart
-st.subheader('Hospital Type - NY')
+st.subheader('Hospital Type in New York')
 bar1 = hospitals_ny['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
 
@@ -184,6 +184,18 @@ st.markdown('The most commonly visited outpatient provider in the state of Texas
 st.subheader('Bar chart displaying different outpatient providers in Texas:')
 fig3 = px.bar(bar2, x='index', y='provider_name')
 st.plotly_chart(fig3)
+
+st.subheader('Outpatient providers in the state of New York')
+
+outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'NY']
+
+bar3 = outpatient_tx['provider_name'].value_counts().reset_index()
+st.dataframe(bar3)
+st.markdown('The most commonly visited outpatient provider in the state of New York is')
+
+st.subheader('Bar chart displaying different outpatient providers in New York:')
+fig4 = px.bar(bar3, x='index', y='provider_name')
+st.plotly_chart(fig4)
 
 
 # hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
