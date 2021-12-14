@@ -44,6 +44,17 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 # for percent_complete in range(100):
 #     time.sleep(0.1)
 #     my_bar.progress(percent_complete + 1)
+
+
+[theme]
+
+primaryColor="#6eb52f"
+backgroundColor="#f0f0f5"
+secondaryBackgroundColor="#e0e0ef"
+textColor="#262730"
+
+
+font="sans serif"
   
 
 st.write('Welcome, *Everyone!* :sunglasses:')
@@ -114,7 +125,7 @@ bar2 = hospitals_ny['timeliness_of_care_national_comparison'].value_counts().res
 fig2 = px.bar(bar2, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig2)
 
-st.markdown('Based on this above bar chart, we can see the majority of hospitals in the NY area fall below the national\
+st.caption('Based on the above bar chart, we can see the majority of hospitals in the NY area fall below the national\
         average as it relates to timeliness of care')
 
 
