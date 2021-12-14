@@ -47,13 +47,11 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 
 
 
-
+[theme]
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
 secondaryBackgroundColor="#e0e0ef"
 textColor="#262730"
-
-
 font="sans serif"
   
 
@@ -239,6 +237,12 @@ st.caption('The most common outpatient provider in the state of New York is Mary
 st.subheader('Bar chart displaying different outpatient providers in New York:')
 fig4 = px.bar(bar3, x='index', y='provider_name')
 st.plotly_chart(fig4)
+with st.expander("See explanation"):
+     st.write("""
+         The chart above shows some numbers I picked for you.
+         I rolled actual dice for these, so they're *guaranteed* to
+         be random.
+     """)
 
 
 # hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
