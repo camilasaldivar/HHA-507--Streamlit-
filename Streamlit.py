@@ -167,10 +167,9 @@ st.header("Costs by Condition and Hospital - Average Total Payments")
 st.dataframe(costs_condition_hospital)
 
 
-st.title('OUTPATIENT dataframe')
+st.title('OUTPATIENT Dataframe')
 
 
-dims = (10, 10)
 fig, ax = plt.subplots(figsize=dims)
 ax = sns.barplot(x = 'Number of Hospitals', y = 'provider_state', data = Total_state)
 ax.set(xlabel = 'Number of Hospitals', ylabel = 'States')
