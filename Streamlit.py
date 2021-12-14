@@ -169,12 +169,14 @@ st.dataframe(costs_condition_hospital)
 
 st.title('OUTPATIENT Dataframe')
 
+st.subheader('Outpatient providers in the state of Texas')
+
 outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'TX']
 
 bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
 st.subheader('Visual Representation:')
-fig = px.pie(bar2, values='provider_name', names='index')
+fig = px.bar(bar2, values='provider_name', names='index')
 st.plotly_chart(fig)
 
 
