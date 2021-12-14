@@ -59,7 +59,7 @@ df_outpatient_2 = load_outpatient()
 
 st.header('Hospital Dataframe:')
 
-st.subheader('Pivot Table for Capturing the Rating for All Hospitals')
+st.subheader('Pivot Table Capturing the Rating for All Hospitals Using the Parameters of Hospital Ownership and Hospital Type')
 dataframe_pivot = df_hospital_2.pivot_table(index=['hospital_ownership','hospital_type'],values=['hospital_overall_rating'],aggfunc='count')
 st.dataframe(dataframe_pivot)
 
