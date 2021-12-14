@@ -175,7 +175,9 @@ outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'TX']
 
 bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
-st.subheader('Visual Representation:')
+st.markdown('The most commonly visited outpatient provider in the state of Texas is Scott & White Medical Center - Temple, followed by Mother Frances Hospital ')
+
+st.subheader('Bar chart displaying different outpatient providers in Texas:')
 fig3 = px.bar(bar2, x='index', y='provider_name')
 st.plotly_chart(fig3)
 
