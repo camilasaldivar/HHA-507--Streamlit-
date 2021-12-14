@@ -96,7 +96,7 @@ st.map(hospitals_ny_gps)
 
 
 #Timeliness of Care
-st.subheader('NY Hospitals - Timelieness of Care')
+st.subheader('NY Hospitals - Timeliness of Care')
 bar2 = hospitals_ny['timeliness_of_care_national_comparison'].value_counts().reset_index()
 fig2 = px.bar(bar2, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig2)
@@ -105,8 +105,8 @@ st.markdown('Based on this above bar chart, we can see the majority of hospitals
         average as it relates to timeliness of care')
 
 
-st.subheader('TX Hospitals - Timelieness of Care')
-bar4 = hospitals_ny['timeliness_of_care_national_comparison'].value_counts().reset_index()
+st.subheader('TX Hospitals - Timeliness of Care')
+bar4 = hospitals_tx['timeliness_of_care_national_comparison'].value_counts().reset_index()
 fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig5)
 
