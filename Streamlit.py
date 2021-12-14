@@ -65,6 +65,8 @@ st.dataframe(dataframe_pivot)
 
 hospitals_ny = df_hospital_2[df_hospital_2['state'] == 'NY']
 
+hospitals_tx = df_hospital_2[df_hospital_2['state'] == 'TX']
+
 
 #Bar Chart
 st.subheader('Hospital Type in New York')
@@ -102,6 +104,14 @@ st.plotly_chart(fig2)
 st.markdown('Based on this above bar chart, we can see the majority of hospitals in the NY area fall below the national\
         average as it relates to timeliness of care')
 
+
+st.subheader('TX Hospitals - Timelieness of Care')
+bar4 = texas_ny['timeliness_of_care_national_comparison'].value_counts().reset_index()
+fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
+st.plotly_chart(fig5)
+
+st.markdown('Based on this above bar chart, we can see the majority of hospitals in the Texas area fall below the national\
+        average as it relates to timeliness of care')
 
 
 #Drill down into INPATIENT and OUTPATIENT just for NY 
