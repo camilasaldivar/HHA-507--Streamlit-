@@ -39,11 +39,11 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 
     
     
-# FAKE LOADER BAR TO STIMULATE LOADING    
-# my_bar = st.progress(0)
-# for percent_complete in range(100):
-#     time.sleep(0.1)
-#     my_bar.progress(percent_complete + 1)
+FAKE LOADER BAR TO STIMULATE LOADING    
+my_bar = st.progress(0)
+for percent_complete in range(100):
+     time.sleep(0.1)
+     my_bar.progress(percent_complete + 1)
 
 
 
@@ -70,6 +70,7 @@ st.header('Hospital Dataframe:')
 
 st.markdown('The dataframe below shows information regarding hospitals')
 st.dataframe(df_hospital_2)
+
 
 
 
@@ -217,6 +218,7 @@ costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definitio
 st.header("Costs by Condition and Hospital - Average Total Payments")
 st.dataframe(costs_condition_hospital)
 
+
 st.markdown('Inpatient Q: Which is the hospital with the highest total payments in the NY area?')
 st.markdown('Inpatient A: The hospital with the highest total payment in NY is New York Prebysterian Hospital with an average total payments of 10.54512M')
 
@@ -250,8 +252,14 @@ with st.expander("See explanation"):
          The chart above shows various outpatient facilities in New York.
      """)
 
-
 hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
 hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
 filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
 st.dataframe(filtered)
+
+select=st.sidebar.checkbox("Show Analysis by State", True, key=1)
+select = st.sidebar.selectbox('Select a State',df_hospital_2['provider_state'])
+#get the state selected in the selectbox
+state_data = df_hospital_2[df_hospital_2['provider_state'] == select]
+select_status = st.sidebar.radio("Mortality National Comparison", ('Below the national average',
+'Not available', 'Same as national average', 'above the national average'))
