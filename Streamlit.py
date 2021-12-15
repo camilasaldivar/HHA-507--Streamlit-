@@ -46,8 +46,7 @@ for percent_complete in range(100):
   
 st.write('Welcome, *Everyone!* :sunglasses:')
 
-color = st.color_picker('Pick A Color', '#00f900')
-st.write('The current color is', color)
+
   
 # Load the data:     
 df_hospital_2 = load_hospitals()
