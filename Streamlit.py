@@ -153,7 +153,8 @@ st.plotly_chart(fig7)
 inpatient_ny = df_inpatient_2[df_inpatient_2['provider_state'] == 'NY']
 total_inpatient_count = sum(inpatient_ny['total_discharges'])
 
-st.header('Total Count of Discharges from Inpatient Captured: ' )
+st.subheader('Discharges')
+st.markdown('Total Count of Discharges from Inpatient Captured: ' )
 st.markdown( str(total_inpatient_count) )
 
 
@@ -170,16 +171,16 @@ bottom10 = common_discharges.tail(10)
 
 
 
-st.header('DRGs')
+st.subheader('DRGs')
 st.dataframe(common_discharges)
 
 
 col1, col2 = st.columns(2)
 
-col1.header('Top 10 DRGs')
+col1.subheader('Top 10 DRGs')
 col1.dataframe(top10)
 
-col2.header('Bottom 10 DRGs')
+col2.subheader('Bottom 10 DRGs')
 col2.dataframe(bottom10)
 
 
@@ -250,7 +251,7 @@ with st.expander("See explanation"):
      """)
 
 
-# hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
-# hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
-# filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
-# st.dataframe(filtered)
+hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
+hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
+filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
+st.dataframe(filtered)
