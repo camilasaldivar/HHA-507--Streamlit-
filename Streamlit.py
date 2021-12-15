@@ -32,6 +32,8 @@ def load_outpatient():
     return df_outpatient_2
 
 
+
+
 st.title('AHI STREAMLIT APP DEPLOYMENT')
 
       
