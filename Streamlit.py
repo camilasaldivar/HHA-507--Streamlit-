@@ -144,7 +144,7 @@ st.subheader('Inpatient Facility')
 bar7 = df_inpatient_2['provider_state'].value_counts().reset_index()
 st.dataframe(bar7)
 
-st.subheader('Pie Chart of Inpatient Facilities by state')
+st.subheader('Bar Chart of Inpatient Facilities by state')
 fig7 = px.bar(bar7, x='index', y='provider_state')
 st.plotly_chart(fig7)
 
@@ -154,7 +154,7 @@ inpatient_ny = df_inpatient_2[df_inpatient_2['provider_state'] == 'NY']
 total_inpatient_count = sum(inpatient_ny['total_discharges'])
 
 st.header('Total Count of Discharges from Inpatient Captured: ' )
-st.header( str(total_inpatient_count) )
+st.markdown( str(total_inpatient_count) )
 
 
 
