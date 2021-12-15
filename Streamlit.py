@@ -17,17 +17,17 @@ import plotly.graph_objects as go
 
 
 @st.cache
-def load_hospitals(allow_output_mutation=True):
+def load_hospitals(allow_output_mutation=True)
     df_hospital_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
     return df_hospital_2
 
 @st.cache
-def load_inatpatient(allow_output_mutation=True):
+def load_inatpatient(allow_output_mutation=True)
     df_inpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_inpatient_2.csv')
     return df_inpatient_2
 
 @st.cache
-def load_outpatient(allow_output_mutation=True):
+def load_outpatient(allow_output_mutation=True)
     df_outpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
     return df_outpatient_2
 
@@ -35,6 +35,7 @@ def load_outpatient(allow_output_mutation=True):
 
 
 st.title('AHI STREAMLIT APP DEPLOYMENT')
+
 
       
 #LOADER BAR TO STIMULATE LOADING    
@@ -46,6 +47,8 @@ for percent_complete in range(100):
   
 st.write('Welcome, *Everyone!* :sunglasses:')
 
+color = st.color_picker('Pick A Color', '#00f900')
+st.write('The current color is', color)
 
   
 # Load the data:     
