@@ -18,7 +18,7 @@ import plotly.graph_objects as go
 
 @st.cache
 def load_hospitals(allow_output_mutation=True):
-    df_hospital_2 = pd.read_csv('https://github.com/hantswilliams/AHI_DataSci_507/blob/d807a0f3dd84709269d05746a34f693d5acefc59/Deployment_Streamlit/hospital_info.csv')
+    df_hospital_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
     return df_hospital_2
 
 @st.cache
