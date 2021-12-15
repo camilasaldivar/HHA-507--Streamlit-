@@ -71,7 +71,15 @@ st.header('Hospital Dataframe:')
 st.markdown('The dataframe below shows information regarding hospitals')
 st.dataframe(df_hospital_2)
 
+st.subheader('Map of NY Hospital Locations')
 
+hospitals_ny_gps = hospitals_ny['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
+hospitals_ny_gps['lon'] = hospitals_ny_gps['lon'].str.strip('(')
+hospitals_ny_gps = hospitals_ny_gps.dropna()
+hospitals_ny_gps['lon'] = pd.to_numeric(hospitals_ny_gps['lon'])
+hospitals_ny_gps['lat'] = pd.to_numeric(hospitals_ny_gps['lat'])
+
+st.map(hospitals_ny_gps)
 
 
 st.subheader('Hospital Type')
@@ -107,17 +115,6 @@ st.caption('The pie chart above shows the different hospital types in the New Yo
 
 
 
-st.subheader('Map of NY Hospital Locations')
-
-hospitals_ny_gps = hospitals_ny['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
-hospitals_ny_gps['lon'] = hospitals_ny_gps['lon'].str.strip('(')
-hospitals_ny_gps = hospitals_ny_gps.dropna()
-hospitals_ny_gps['lon'] = pd.to_numeric(hospitals_ny_gps['lon'])
-hospitals_ny_gps['lat'] = pd.to_numeric(hospitals_ny_gps['lat'])
-
-st.map(hospitals_ny_gps)
-
-
 #Timeliness of Care
 st.subheader('NY Hospitals - Timeliness of Care')
 bar2 = hospitals_ny['timeliness_of_care_national_comparison'].value_counts().reset_index()
@@ -134,6 +131,10 @@ fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig5)
 st.caption('Based on the bar chart above, we can see the the timeliness of care data for the majority of hospitals in the Texas area is not available and for 127 hospitals is the same as the national average')
 
+
+
+st.markdown('Hospital Q: What is the most common hospital type in NY & and where do NY hospitals fall in regards to timeliness of care?')
+st.markdown('As shown by the analysis above, the most common hospital type in NY is acute care (144 acute care hospitals). Most of New York Hospitals are below national average in regards to timeliness of care(103 hospitals)') 
 
 #Drill down into INPATIENT and OUTPATIENT 
 st.title('INPATIENT dataframe')
@@ -198,12 +199,16 @@ costs_sum = costs.merge(costs_medicare, how='left', left_on='provider_name', rig
 costs_sum['delta'] = costs_sum['average_total_payments'] - costs_sum['average_medicare_payments']
 
 
-st.title('COSTS')
+st.subheader('COSTS')
 
 bar3 = px.bar(costs_sum, x='provider_name', y='average_total_payments')
 st.plotly_chart(bar3)
-st.header("Hospital - ")
+st.header("Hospital Costs by Provider and Average Total Payments ")
 st.dataframe(costs_sum)
+with st.expander("See explanation"):
+     st.write("""
+         This table shows the total sum of the payments made to each provider.
+     """)
 
 
 #Costs by Condition and Hospital / Average Total Payments
@@ -211,6 +216,8 @@ costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definitio
 st.header("Costs by Condition and Hospital - Average Total Payments")
 st.dataframe(costs_condition_hospital)
 
+st.markdown('Inpatient Q: Which is the hospital with the highest total payments in the NY area?')
+st.markdown('Inpatient A: The hospital with the highest total payment in NY is New York Prebysterian Hospital with an average total payments of 10.54512M')
 
 st.title('OUTPATIENT Dataframe')
 
