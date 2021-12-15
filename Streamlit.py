@@ -266,9 +266,9 @@ hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
 filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
 st.dataframe(filtered)
 
-providerstate=df_hospital_2['provider_state']
+providerstate = df_hospital_2['provider_state'].drop_duplicates()
 select=st.sidebar.checkbox("Show Analysis by State", True, key=1)
-select= st.sidebar.selectbox('Select a State:',providerstate)
+select=st.sidebar.selectbox('Select a State:',providerstate)
 #get the state selected in the selectbox
 state_data = df_hospital_2[df_hospital_2['provider_state'] == select]
 select_status = st.sidebar.radio("Mortality National Comparison", ('Below the national average',
