@@ -37,8 +37,7 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 
 
 
-    
-    
+       
 #LOADER BAR TO STIMULATE LOADING    
 my_bar = st.progress(0)
 for percent_complete in range(100):
@@ -294,13 +293,13 @@ st.subheader('Pivot APC for SBU Hospital')
 dataframe_pivot = df_merged_clean_SB.pivot_table(index=['provider_id','apc'],values=['average_total_payments'],aggfunc='mean')
 st.dataframe(dataframe_pivot)
 st.markdown('SBU Hospital Q: What are the most expensive apc for SBU Hopsital?')
-st.markdown('SBU Answer:The most expensive average total cost for APC in the outpatient and hospital dataframe with SBU hospital are the following')
+st.markdown('SBU Answer:The most expensive average total cost for APC in the outpatient and hospital dataframe with SBU hospital are: ')
 st.markdown('1. Level IV endoscopy 2307.21, 2. Level IV Nerver Injections 1325.64, 3. Level II Cardiac Imaging 1300.67')
 
 st.header('Merging of Hospital and Inpatient data sets')
 df_hospital_2['provider_id'] = df_hospital_2['provider_id'].astype(str)
 df_inpatient_2['provider_id'] = df_inpatient_2['provider_id'].astype(str)
-df_merged2 = df_inpatient_2.merge(df_Hospital_2, how='left', left_on='provider_id', right_on='provider_id')
+df_merged2 = df_inpatient_2.merge(df_hospital_2, how='left', left_on='provider_id', right_on='provider_id')
 df_merged_clean2 = df_merged2[df_merged2['hospital_name'].notna()]
 df_merged_clean_SB2 = df_merged_clean2[df_merged_clean2['provider_id'] == '330393']
 df_merged_clean_SB2
