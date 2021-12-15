@@ -46,15 +46,7 @@ for percent_complete in range(100):
      my_bar.progress(percent_complete + 1)
 
 
-
-
-primaryColor="#6eb52f"
-backgroundColor="#f0f0f5"
-secondaryBackgroundColor="#e0e0ef"
-textColor="#262730"
-font="sans serif"
   
-
 st.write('Welcome, *Everyone!* :sunglasses:')
 
 color = st.color_picker('Pick A Color', '#00f900')
@@ -260,11 +252,6 @@ with st.expander("See explanation"):
 st.markdown('Outpatient Q: Which are the most common outpatient facilities in NY and TX?')
 st.markdown('Mary Imogene Bassett Hospital and Scott & White Medical Center respectively') 
 
-
-hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
-hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
-filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
-st.dataframe(filtered)
 
 st.header('Merging datasets for SBU and CEMC Hopsital values')
 st.markdown('Merging of Datasets to show SBU Hospital values')
