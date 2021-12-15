@@ -39,7 +39,7 @@ st.title('AHI STREAMLIT APP DEPLOYMENT')
 
     
     
-#FAKE LOADER BAR TO STIMULATE LOADING    
+#LOADER BAR TO STIMULATE LOADING    
 my_bar = st.progress(0)
 for percent_complete in range(100):
      time.sleep(0.1)
@@ -230,11 +230,16 @@ outpatient_tx = df_outpatient_2[df_outpatient_2['provider_state'] == 'TX']
 
 bar2 = outpatient_tx['provider_name'].value_counts().reset_index()
 st.dataframe(bar2)
-st.caption('The most commonly visited outpatient provider in the state of Texas is Scott & White Medical Center - Temple, followed by Mother Frances Hospital ')
+st.caption('The most common outpatient facility in the state of Texas is Scott & White Medical Center - Temple, followed by Mother Frances Hospital ')
 
 st.subheader('Bar chart displaying different outpatient providers in Texas:')
 fig3 = px.bar(bar2, x='index', y='provider_name')
 st.plotly_chart(fig3)
+with st.expander("See explanation"):
+     st.write("""
+         The chart is a visual representation that includes all of the outpatient facilities in Texas.
+     """)
+
 
 st.subheader('Outpatient providers in the state of New York')
 
@@ -251,14 +256,19 @@ with st.expander("See explanation"):
      st.write("""
          The chart above shows various outpatient facilities in New York.
      """)
+        
+st.markdown('Outpatient Q: Which are the most common outpatient facilities in NY and TX?')
+st.markdown('Mary Imogene Bassett Hospital and Scott & White Medical Center respectively') 
+
 
 hospitals = costs_condition_hospital['provider_name'].drop_duplicates()
 hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
 filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
 st.dataframe(filtered)
 
+providerstate=df_hospital_2['provider_state']
 select=st.sidebar.checkbox("Show Analysis by State", True, key=1)
-select = st.sidebar.selectbox('Select a State',df_hospital_2['provider_state'])
+select= st.sidebar.selectbox('Select a State:',providerstate)
 #get the state selected in the selectbox
 state_data = df_hospital_2[df_hospital_2['provider_state'] == select]
 select_status = st.sidebar.radio("Mortality National Comparison", ('Below the national average',
