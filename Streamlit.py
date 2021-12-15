@@ -71,13 +71,7 @@ st.header('Hospital Dataframe:')
 st.markdown('The dataframe below shows information regarding hospitals')
 st.dataframe(df_hospital_2)
 
-st.subheader('Map of NY Hospital Locations')
-hospitals_ny_gps = hospitals_ny['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'})  
-hospitals_ny_gps['lon'] = hospitals_ny_gps['lon'].str.strip('(')
-hospitals_ny_gps = hospitals_ny_gps.dropna()
-hospitals_ny_gps['lon'] = pd.to_numeric(hospitals_ny_gps['lon'])
-hospitals_ny_gps['lat'] = pd.to_numeric(hospitals_ny_gps['lat'])
-st.map(hospitals_ny_gps)
+
 
 st.subheader('Hospital Type')
 bar1 = df_hospital_2['hospital_type'].value_counts().reset_index()
@@ -95,6 +89,15 @@ st.dataframe(dataframe_pivot)
 hospitals_ny = df_hospital_2[df_hospital_2['state'] == 'NY']
 
 hospitals_tx = df_hospital_2[df_hospital_2['state'] == 'TX']
+
+
+st.subheader('Map of NY Hospital Locations')
+hospitals_ny_gps = hospitals_ny['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'})  
+hospitals_ny_gps['lon'] = hospitals_ny_gps['lon'].str.strip('(')
+hospitals_ny_gps = hospitals_ny_gps.dropna()
+hospitals_ny_gps['lon'] = pd.to_numeric(hospitals_ny_gps['lon'])
+hospitals_ny_gps['lat'] = pd.to_numeric(hospitals_ny_gps['lat'])
+st.map(hospitals_ny_gps)
 
 
 #Bar Chart
