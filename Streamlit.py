@@ -266,10 +266,65 @@ hospital_choice = st.sidebar.selectbox('Select your hospital:', hospitals)
 filtered = costs_sum["provider_name"].loc[costs_sum["provider_name"] == hospital_choice]
 st.dataframe(filtered)
 
+st.header('Merging datasets for SBU and CEMC Hopsital values')
+st.markdown('Merging of Datasets to show SBU Hospital values')
+df_hospital_2['provider_id'] = df_hospital_2['provider_id'].astype(str)
+df_outpatient_2['provider_id'] = df_outpatient_2['provider_id'].astype(str)
+df_merged = df_outpatient_2.merge(df_hospital_2, how='left', left_on='provider_id', right_on='provider_id')
 
-select=st.sidebar.checkbox("Show Analysis by State", True, key=1)
-select=st.sidebar.selectbox('Select a State:',providerstate)
-#get the state selected in the selectbox
-state_data = df_hospital_2[df_hospital_2['provider_state'] == select]
-select_status = st.sidebar.radio("Mortality National Comparison", ('Below the national average',
-'Not available', 'Same as national average', 'above the national average'))
+st.dataframe(df_merged)
+st.markdown('Cleaning of df_merge')
+df_merged_clean = df_merged[df_merged['hospital_name'].notna()]
+st.dataframe(df_merged_clean)
+
+st.header('Stony Brook University Hospital dataset')
+df_merged_clean_SB = df_merged_clean[df_merged_clean['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
+df_merged_clean_SB
+
+st.header('Carolina East Medical Center')
+df_merged_clean_CEMC = df_merged_clean[df_merged_clean['hospital_name'] == 'CAROLINA EAST MEDICAL CENTER']
+df_merged_clean_CEMC
+
+st.header('Comparison of CEMC and SBU Hospitals')
+final_df_comparison = pd.concat([df_merged_clean_CEMC, df_merged_clean_SB])
+st.dataframe(final_df_comparison)
+
+st.subheader('Final Comparison Pivot Table')
+dataframe_pivot = final_df_comparison.pivot_table(index=['hospital_name','apc'],values=['average_total_payments'],aggfunc='mean')
+st.dataframe(dataframe_pivot)
+
+bar2 = final_df_comparison['hospital_name'].value_counts().reset_index()
+st.subheader('Bar chart displaying SBU and CEMC differences between average total payments')
+fig3 = px.bar(bar2, x='index', y='hospital_name')
+st.plotly_chart(fig3)
+st.dataframe(bar2)
+st.markdown('Showing the total difference between average total payments between CEMC and SBU hospitals.')
+st.markdown('SBU Hospital Question: What is the difference between total payment for Stony Brook Hospital compared to another hospital from a different state?')
+st.markdown('SBU Hospital Answer: The total average payments between Stony Brook University hospital and Carolina East Medical Center(CEMC) as we can also see CEMC is a government- Hospital District or Authority and Stony Brook ownership is by Government-state.') 
+st.markdown('Here we can see Stony Brook Hospital has 0 apcs for 0012, 0015 debridment compared to CEMC, and we see that Stony Brook University Hospital from this pivot table has higher cost of average total payments with Endoscopy upper airway compared to CEMC with approximately 6588 compared to Stony Brook 8645.')
+
+st.subheader('Pivot APC for SBU Hospital')
+dataframe_pivot = df_merged_clean_SB.pivot_table(index=['provider_id','apc'],values=['average_total_payments'],aggfunc='mean')
+st.dataframe(dataframe_pivot)
+st.markdown('SBU Hospital Q: What are the most expensive apc for SBU Hopsital?')
+st.markdown('SBU Answer:The most expensive average total cost for APC in the outpatient and hospital dataframe with SBU hospital are the following')
+st.markdown('1. Level IV endoscopy 2307.21, 2. Level IV Nerver Injections 1325.64, 3. Level II Cardiac Imaging 1300.67')
+
+st.header('Merging of Hospital and Inpatient data sets')
+df_hospital_2['provider_id'] = df_hospital_2['provider_id'].astype(str)
+df_inpatient_2['provider_id'] = df_inpatient_2['provider_id'].astype(str)
+df_merged2 = df_inpatient_2.merge(df_Hospital_2, how='left', left_on='provider_id', right_on='provider_id')
+df_merged_clean2 = df_merged2[df_merged2['hospital_name'].notna()]
+df_merged_clean_SB2 = df_merged_clean2[df_merged_clean2['provider_id'] == '330393']
+df_merged_clean_SB2
+
+st.header('Pivot table for average cost of each DRG for SBU Hospital')
+st.subheader('Pivot DRG for SBU Hospital')
+dataframe_pivot = df_merged_clean_SB2.pivot_table(index=['provider_name','drg_definition'],values=['average_total_payments'],aggfunc='mean')
+st.dataframe(dataframe_pivot)
+
+st.markdown('SBU Hospital Inpatient Q: What are the most expesive drugs comparing Stony Brook average total payments for DRG?')
+st.markdown('SBU Answer: 1. ECMO or TRACH - $216636.88, 2. Trach W MV - $132951.87, 3. Cranio W Major Dev - $69981.35.')
+st.markdown('All three have the most expensive total average payments for drg_definition with df_Hospital and df_Inpatient')
+           
+
