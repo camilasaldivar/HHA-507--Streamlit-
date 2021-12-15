@@ -36,11 +36,14 @@ def load_outpatient(allow_input_mutation=True):
 
 st.title('AHI STREAMLIT APP DEPLOYMENT')
 
-
-      
-
-  
+        
 st.write('Welcome, *Everyone!* :sunglasses:')
+
+#LOADER BAR TO STIMULATE LOADING    
+my_bar = st.progress(0)
+for percent_complete in range(100):
+     time.sleep(0.1)
+     my_bar.progress(percent_complete + 1)
 
 color = st.color_picker('Pick A Color', '#00f900')
 st.write('The current color is', color)
